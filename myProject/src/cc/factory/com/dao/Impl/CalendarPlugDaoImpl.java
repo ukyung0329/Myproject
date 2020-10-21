@@ -1,0 +1,33 @@
+package cc.factory.com.dao.Impl;
+
+import java.util.List;
+
+import org.mybatis.spring.SqlSessionTemplate;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+import cc.factory.com.dao.CalendarPlugDao;
+import cc.factory.com.dto.CalendarPlugDto;
+
+@Repository
+public class CalendarPlugDaoImpl implements CalendarPlugDao {
+	
+	@Autowired
+	SqlSessionTemplate sqlSession;
+	
+	private String ns = "CalendarPlug.";
+
+	@Override
+	public List<CalendarPlugDto> getCalendarPlugList(CalendarPlugDto dto) {		
+		return sqlSession.selectList(ns + "getCalendarPlugList", dto);
+	}
+
+	
+}
+
+
+
+
+
+
+
